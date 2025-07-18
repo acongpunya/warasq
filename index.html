@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>warasq</title>
+    <style>
+        /* Reset dan Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(200deg, #ff3e3e, #fbfffd); /* biru ke hijau */
+            min-height: 100vh; /* agar background mengisi seluruh layar */
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+
+        }
+        
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #ffffffd2;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        header h3 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #e74c3c;
+        }
+        
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #2c3e50;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            padding: 2rem;
+            flex: 1;
+        }
+         /*img*/
+        .stiker-img {
+            width: 50%;
+            height: 200px;
+            padding: flex;
+            
+        }
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background-color: #ffffff;
+            width: 100%;
+            color: rgb(26, 24, 24);
+            border-radius: 8px;
+            margin-bottom: 3rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .hero a {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: white;
+            color: #e74c3c;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .hero a:hover {
+            background-color: #f1f1f1;
+            transform: translateY(-2px);
+        }
+        
+        /* Features Section */
+        .features {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .features h2 {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+        
+        .feature-card {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card h3 {
+            color: #e74c3c;
+            margin-bottom: 1rem;
+        }
+        
+        /* Location Section */
+        .location {
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .location h2 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+        
+        .map-container {
+            height: 400px;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .address {
+            margin-top: 1.5rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: inline-block;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            text-align: left;
+        }
+        
+        .footer-section h3 {
+            color: #e74c3c;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #ecf0f1;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: #e74c3c;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #34495e;
+            font-size: 0.9rem;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.5s ease;
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 1.5rem 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active div:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            
+            .hamburger.active div:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active div:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .map-container {
+                height: 300px;
+            }
+            
+            .footer-section {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h3>WarAsq</h3>
+        <nav>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul>
+                <li><a href="index.html">INDEX</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="menu.html">MENU</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <img src="gambar.jpg" alt="stiker gambar" class="stiker-img">
+            <h1>Selamat Datang di WarAsq (warung asiq) Mpok Mai</h1>
+            <p>Tempat di mana setiap teguk Es Teh Manis membawa kesegaran dan kenikmatan. Nikmati manisnya Teh yang diracik oleh Ahlinya.</p>
+            <a href="menu.html">Lihat Menu</a>
+        </section>
+
+        <section class="features">
+            <h2>Apa Yang Kami Tawarkan</h2>
+            <div class="feature-card">
+                <h3>Teh Berkualitas</h3>
+                <p>Kami hanya menggunakan  Teh yang berkualitas baik dan gula murni</p>
+            </div>
+            <div class="feature-card">
+                <h3>Barista Profesional</h3>
+                <p>Diracik oleh barista yang berpengalaman yang memahami seni menyeduh Teh.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Bermacam-macam Makanan dan Minuman</h3>
+                <p>Tidak hanya meracik Teh saja. Tetapi masih banyak lagi racikan dan buatan lainya yang tidak kalah Rasanya.</p>
+            </div>
+        </section>
+
+        <section class="location">
+            <h2>Lokasi Kami</h2>
+            <div class="map-container">
+               
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.8028556822096!2d106.72276257409537!3d-6.157152860345966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f7f53f36bf1f%3A0x7dbcda034668976b!2sJl.%20KH.%20Abdul%20Wahab%2C%20RW.6%2C%20Duri%20Kosambi%2C%20Kecamatan%20Cengkareng%2C%20Kota%20Jakarta%20Barat%2C%20Daerah%20Khusus%20Ibukota%20Jakarta%2011750!5e0!3m2!1sid!2sid!4v1752680985628!5m2!1sid!2sid"
+                allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="address">
+                <h3>Alamat WarAsq</h3>
+                <p>Jl. KH. Abdul Wahab, RT/RW 006/06, Jakarta Barat</p>
+                <p>Belakang Mushollah Al Hasyimiyah</p>
+                <p>Buka setiap hari dari 08:00 - 22:00 WIB</p>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Tentang Kami</h3>
+                <p>WarAsq adalah warung kopi dan makanan yang menyajikan hidangan dengan cita rasa yang Muantab!!.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Kontak</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Jl. Kh. Abdul wahab RT/RW 006/06</p>
+                <p><i class="fas fa-phone"></i> 0896-5299-7407</p>
+                <p><i class="fas fa-envelope"></i> info@warasq.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Media Sosial Kami</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+                    <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://wa.me/62896-5299-7407"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 WarAsq. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('nav ul');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Tutup menu saat mengklik link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+    
+    <!-- Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</body>
+</html>

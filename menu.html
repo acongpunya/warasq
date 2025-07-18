@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu WarAsq</title>
+  <style>
+    /* Reset dan Gaya Dasar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(200deg, #ff3e3e, #fbfffd);
+      min-height: 100vh;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #ffffffd2;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h3 {
+      font-size: 1.8rem;
+      color: #2c3e50;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 1.5rem;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #e74c3c;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: #2c3e50;
+      margin: 5px;
+      transition: all 0.3s ease;
+    }
+
+    /* Main Content */
+    main {
+      padding: 120px 20px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .menu-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .menu-header h1 {
+      color: #3a3a3a;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .menu-header p {
+      font-size: 1.1rem;
+    }
+
+    .menu-category {
+      margin-bottom: 40px;
+    }
+
+    .category-title {
+      font-size: 1.8rem;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #e74c3c;
+      padding-bottom: 10px;
+    }
+
+    .menu-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .menu-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .menu-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 3px solid #e74c3c;
+    }
+
+    .menu-content {
+      padding: 15px;
+    }
+
+    .menu-item-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+
+    .menu-item-price {
+      background-color: #e74c3c;
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 15px;
+      font-size: 0.9rem;
+    }
+
+    .menu-item-desc {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .menu-item-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .best-seller {
+      background-color: #f39c12;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .menu-items {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-header h1 {
+        font-size: 2rem;
+      }
+
+      .category-title {
+        font-size: 1.5rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        background: #fff;
+        width: 100%;
+        height: calc(100vh - 80px);
+        align-items: center;
+        justify-content: center;
+        transition: left 0.3s;
+      }
+
+      nav ul.active {
+        left: 0;
+      }
+
+      nav ul li {
+        margin: 1.5rem 0;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .hamburger.active div:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+      }
+
+      .hamburger.active div:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active div:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h3>WarAsq</h3>
+    <nav>
+      <div class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul>
+        <li><a href="index.html">INDEX</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="menu.html">MENU</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="menu-header">
+      <h1>Menu WarAsq</h1>
+      <p>Nikmati berbagai pilihan minuman dan makanan berkualitas dengan rasa yang istimewa</p>
+    </div>
+
+    <div class="menu-category">
+      <h2 class="category-title">Minuman</h2>
+      <div class="menu-items">
+
+        <!-- Item 1 -->
+        <div class="menu-card">
+          <img src="images.jpg" alt="Es Teh Manis" class="menu-img">
+          <div class="menu-content">
+            <div class="menu-item-name">
+              <span>Es Teh Manis</span>
+              <span class="menu-item-price">Rp3.000</span>
+            </div>
+            <p class="menu-item-desc">Teh pilihan disajikan dingin dengan gula pasir khas</p>
+            <span class="menu-item-badge best-seller">Best Seller</span>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="menu-card">
+          <img src="download (5).jpg" alt="Susu Sachet" class="menu-img">
+          <div class="menu-content">
+            <div class="menu-item-name">
+              <span>Susu Sachet</span>
+              <span class="menu-item-price">Rp5.000</span>
+            </div>
+            <p class="menu-item-desc">Susu sachet asli tanpa perasa buatan</p>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="menu-card">
+          <img src="kopi .jpg" alt="Kopi Hitam" class="menu-img">
+          <div class="menu-content">
+            <div class="menu-item-name">
+              <span>Kopi Hitam</span>
+              <span class="menu-item-price">Rp5.000</span>
+            </div>
+            <p class="menu-item-desc">Kopi sachet pilihan dari warga lokal</p>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="menu-card">
+          <img src="pop ice.jpg" alt="Kopi Hitam" class="menu-img">
+          <div class="menu-content">
+            <div class="menu-item-name">
+              <span>Pop Ice</span>
+              <span class="menu-item-price">Rp5.000</span>
+            </div>
+            <p class="menu-item-desc">Pop Ice dengan serbuk sachect asli beserta topingnya</p>
+            <span class="menu-item-badge best-seller">Best Seller</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="menu-category">
+      <h2 class="category-title">Makanan</h2>
+      <div class="menu-items">
+
+        <!-- Item 1 -->
+        <div class="menu-card">
+          <img src="mie.jpg" alt="mie instan" class="menu-img">
+          <div class="menu-content">
+            <div class="menu-item-name">
+              <span>Mie Instan</span>
+              <span class="menu-item-price">Rp3.000,- Rp5.000</span>
+            </div>
+            <p class="menu-item-desc">Mie Instan yang dimasak sepenuh hati</p>
+            <span class="menu-item-badge best-seller">Best Seller</span>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="menu-card">
+          <img src="otakotak.jpg" alt="makanan ringan" class="menu-img">
+          <div class="menu-content">
+            <div class="menu-item-name">
+              <span>Makanan Ringan</span>
+              <span class="menu-item-price">Rp1.000,</span>
+            </div>
+            <p class="menu-item-desc">Makanan dengan olahan terbaik</p>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="menu-card">
+          <img src="pisang.jpg" alt="pisang" class="menu-img">
+          <div class="menu-content">
+            <div class="menu-item-name">
+              <span>Pisang goreng </span>
+              <span class="menu-item-price">Rp5.000</span>
+            </div>
+            <p class="menu-item-desc">Tersedia Pisang yang goreng keju, crispy, dll dan ditambah toping cinta </p>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="menu-card">
+          <img src="hamburger.jpg" alt="hamburger" class="menu-img">
+          <div class="menu-content">
+            <div class="menu-item-name">
+              <span>Hamburger</span>
+              <span class="menu-item-price">Rp5.000</span>
+            </div>
+            <p class="menu-item-desc">Dibuat oleh yang ahlinya dan cinta rasa yang wenak</p>
+            <span class="menu-item-badge best-seller">Best Seller</span>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="menu-card">
+          <img src="telur.jpg" alt="hamburger" class="menu-img">
+          <div class="menu-content">
+            <div class="menu-item-name">
+              <span>Aneka Telur</span>
+              <span class="menu-item-price">Rp2.000,- Rp5.000</span>
+            </div>
+            <p class="menu-item-desc">Dibuat oleh yang ahlinya dan cinta rasa yang wenak</p>
+            <span class="menu-item-badge best-seller">Best Seller</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('nav ul');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    document.querySelectorAll('nav ul li a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
